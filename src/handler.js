@@ -63,7 +63,7 @@ const addBookHandler = (request, h) => {
 
 
 
-const getAllBooks = () => {
+const getAllBooksHandler = () => {
 
     const listOfBooks = books.map((book) => {
         return {
@@ -82,7 +82,7 @@ const getAllBooks = () => {
 };
 
 
-const getBooksById = (request, h) => {
+const getBooksByIdHandler = (request, h) => {
     const { id } = request.params;
     const book = books.filter((book) => book.id === id)[0];
 
@@ -105,7 +105,7 @@ const getBooksById = (request, h) => {
 }
 
 
-const editBookById = (request, h) => {
+const editBookByIdHandler = (request, h) => {
     const { id } = request.params;
     const { name, year, author, summary, publisher, pageCount, readPage, reading } = request.payload;
     const updatedAT = new Date().toISOString();
@@ -166,7 +166,7 @@ const editBookById = (request, h) => {
 }
 
 
-const deleteBookById = (request, h) => {
+const deleteBookByIdHandler = (request, h) => {
     const { id } = request.params;
     const index = books.findIndex((book) => book.id === id);
 
@@ -191,4 +191,10 @@ const deleteBookById = (request, h) => {
     return response;
 }
 
-module.exports = { addBookHandler, getAllBooks, getBooksById, editBookById, deleteBookById };
+module.exports = { 
+    addBookHandler,
+    getAllBooksHandler,
+    getBooksByIdHandler,
+    editBookByIdHandler,
+    deleteBookByIdHandler
+};
